@@ -1,10 +1,10 @@
 import numpy as np
 
 class OneLayerPerceptron:
-    def __init__(self, lr):
-        self.lr = lr
+    def __init__(self, lr): 
+        self.lr = lr  #Скорость обучения
 
-    def activation(self,x):
+    def activation(self,x):  #Функция активации
         return 1 if x>=0 else 0
     
     
@@ -16,7 +16,7 @@ class OneLayerPerceptron:
             for j in range(len(X)):
                 train_predict = self.activation(np.dot(X[j], self.weight)+self.b)
 
-                error = y[j] - train_predict
+                error = y[j] - train_predict  #Функция потерь
                 self.weight+=self.lr*error*X[j]
                 self.b+=self.lr*error
     
@@ -28,11 +28,5 @@ class OneLayerPerceptron:
             result.append(y)
 
         return print(f'Вход: {inp}, выход: {result}')
-
-        
-    
-First = OneLayerPerceptron(0.1)
-First.train(np.array([[1,0],[1,1],[0,1],[0,0]]), np.array([0,1,0,1]), 100)
-First.predict([[1,1],[0,0]])
 
     
